@@ -1,7 +1,7 @@
 pipeline {
     environment {
-        registry = 'israelaminu/ml_model'
-        registryCredential = 'dockerhub_id'
+        registry = 'tobywithdocker/jenkins_test'
+        registryCredential = 'tobywithdocker'
         dockerImage = ''
     }
     agent any
@@ -22,11 +22,6 @@ pipeline {
                         dockerImage.push()
                     }
                 }
-            }
-        }
-        stage('Remove Unused docker image') {
-            steps {
-                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
     }
